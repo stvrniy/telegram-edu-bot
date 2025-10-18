@@ -1,0 +1,47 @@
+# Бази даних
+*.db
+*.sqlite3
+*.db-journal
+
+# Медіа файли
+media/
+*.png
+*.jpg
+*.jpeg
+
+# Конфіденційні дані
+config.py
+.env
+secrets.py
+
+# Логи
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
