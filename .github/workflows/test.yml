@@ -1,23 +1,37 @@
-name: Run Unit Tests
-
-on: [push, pull_request]
+name: Tests
+on:
+  push:
+  pull_request:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v3
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install test dependencies
+      - name: Install deps
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements-test.txt
+          python -m pip install -U pip
+          if [ -f requirements-test.txt ]; then pip install -r requirements-test.txt; fi
+          pip install -r requirements.txt
+          # страховка: якщо pytest-cov відсутній у requirements.txt
+          pip install pytest pytest-cov
 
-      - name: Run unit tests
-        run: pytest tests/test_models.py -v --cov=database.models
+      - name: Run unit tests with coverage (statements + branches)
+        run: |
+          pytest -q --maxfail=1 \
+            --cov=database --cov=handlers --cov=services \
+            --cov-branch \
+            --cov-report=term-missing \
+            --cov-report=html
+
+      - name: Upload coverage HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: htmlcov
+          path: htmlcov
