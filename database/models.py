@@ -106,16 +106,31 @@ def get_users_for_group(group_name):
     conn.close()
     return users
 
-def add_event(date, time, title, room, group_name):
-    """Додає подію"""
+# database/models.py
+import datetime
+
+def add_event(date: str, time: str, title: str, room: str | None, group_name: str) -> int:
+    """Додає подію до розкладу"""
+    if not title or not title.strip():
+        raise ValueError("title must be non-empty")
+
+    try:
+        d = datetime.date.fromisoformat(date)
+    except ValueError as e:
+        raise ValueError("invalid date format, expected YYYY-MM-DD") from e
+
+    if d < datetime.date.today():
+        raise ValueError("date must not be in the past")
+
     conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute('''
-    INSERT OR REPLACE INTO events (date, time, title, room, group_name)
-    VALUES (?, ?, ?, ?, ?)
-    ''', (date, time, title, room, group_name))
+    cur = conn.cursor()
+    cur.execute(
+        "INSERT INTO events(date, time, title, room, group_name) VALUES (?, ?, ?, ?, ?)",
+        (date, time, title.strip(), room, group_name),
+    )
     conn.commit()
-    conn.close()
+    return cur.lastrowid
+
 
 def get_events(group_name, date=None):
     """Отримує події для групи"""
