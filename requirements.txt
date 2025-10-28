@@ -1,5 +1,17 @@
-aiogram==3.0.0b7
-APScheduler==3.10.1
+# --- core bot & web ---
+aiogram==3.22.0
+aiohttp==3.12.14
+aiofiles==23.2.1    # >=23.2.1 — щоб не конфліктувало з aiogram>=3.13
 python-dotenv==1.0.0
+
+# --- scheduler ---
+APScheduler==3.10.1
+
+# --- API stack (Pydantic v2) ---
 fastapi==0.115.5
+starlette==0.41.3
+pydantic==2.11.10
+typing-extensions==4.15.0
+
+# --- dev/runtime niceties (не обов’язково, але стабілізує інсталяції) ---
 uvicorn==0.32.0

@@ -1,0 +1,48 @@
+name: SCA & Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  sca:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Create venv
+        run: python -m venv venv_sca
+
+      - name: Install deps
+        run: |
+          .\venv_sca\Scripts\pip.exe install -U pip
+          .\venv_sca\Scripts\pip.exe install -r requirements.txt
+          .\venv_sca\Scripts\pip.exe install -r requirements-test.txt
+          .\venv_sca\Scripts\pip.exe install bandit semgrep pip-audit detect-secrets
+
+      - name: Run tests
+        run: .\venv_sca\Scripts\pytest.exe -q
+
+      - name: Run Bandit
+        run: .\venv_sca\Scripts\bandit.exe -r . -x venv,venv_*,.git,__pycache__,.pytest_cache -f json | Out-File -FilePath reports\bandit.json -Encoding utf8
+
+      - name: Run Semgrep
+        run: .\venv_sca\Scripts\semgrep.exe scan --config=p/ci --config=p/python --exclude venv --exclude venv_* --exclude .git --exclude .pytest_cache --timeout 180 --json --output reports\semgrep.json
+
+      - name: Run pip-audit
+        run: .\venv_sca\Scripts\pip-audit.exe -r requirements.txt -f json | Out-File -FilePath reports\pip-audit.json -Encoding utf8
+
+      - name: Run detect-secrets (or Safety)
+        run: .\venv_sca\Scripts\detect-secrets.exe scan > reports\detect-secrets.json
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: sca-reports
+          path: reports/*

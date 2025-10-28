@@ -1,4 +1,9 @@
-﻿pytest==8.4.2
+﻿-i https://pkgs.safetycli.com/repository/sumdu/project/telegram-edu-bot/pypi/simple/
+pytest==8.4.2
 pytest-cov==7.0.0
 pytest-asyncio==1.2.0
 anyio==4.11.0
+bandit==1.7.8
+semgrep==1.141.0
+pip-audit==2.7.3
+safety==3.6.2
