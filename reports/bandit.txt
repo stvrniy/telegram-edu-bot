@@ -1,0 +1,331 @@
+﻿Run started:2025-10-27 16:46:15.582012
+
+Test results:
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html
+   Location: .\load\server.py:38:8
+37	            models.init_db()
+38	        except Exception:
+39	            pass
+40	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_integration.py:90:12
+89	            user_count = cursor.fetchone()[0]
+90	            assert user_count == 2
+91	            
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_integration.py:94:12
+93	            event_count = cursor.fetchone()[0]
+94	            assert event_count == 2
+95	            
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_integration.py:104:12
+103	            users_with_notifications = cursor.fetchall()
+104	            assert len(users_with_notifications) == 1  # ╥│ы№ъш юфшэ ъюЁшёЄєтрў ч єт│ьъэхэшьш ёяют│∙хээ ьш
+105	            assert users_with_notifications[0][2] == '╥хёЄ ╩юЁшёЄєтрў 1'
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_integration.py:105:12
+104	            assert len(users_with_notifications) == 1  # ╥│ы№ъш юфшэ ъюЁшёЄєтрў ч єт│ьъэхэшьш ёяют│∙хээ ьш
+105	            assert users_with_notifications[0][2] == '╥хёЄ ╩юЁшёЄєтрў 1'
+106	            
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_integration.py:116:12
+115	            events = cursor.fetchall()
+116	            assert len(events) == 2
+117	            assert events[0][3] == '╠рЄхьрЄшър'
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_integration.py:117:12
+116	            assert len(events) == 2
+117	            assert events[0][3] == '╠рЄхьрЄшър'
+118	            assert events[1][3] == '╘│чшър'
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_integration.py:118:12
+117	            assert events[0][3] == '╠рЄхьрЄшър'
+118	            assert events[1][3] == '╘│чшър'
+119	            
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_integration.py:129:12
+128	            events_by_date = cursor.fetchall()
+129	            assert len(events_by_date) == 2
+130	            assert all(event[1] == '2025-09-16' for event in events_by_date)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_integration.py:130:12
+129	            assert len(events_by_date) == 2
+130	            assert all(event[1] == '2025-09-16' for event in events_by_date)
+131	            
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_integration.py:165:12
+164	            # ╧хЁхт│Ё ║ью Ёхчєы№ЄрЄ
+165	            assert len(events) == 2
+166	            assert events == test_data['events']
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_integration.py:166:12
+165	            assert len(events) == 2
+166	            assert events == test_data['events']
+167	            
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_integration.py:198:16
+197	                mock_get_users.assert_called_once_with('╩╤-21')
+198	                assert mock_bot.send_message.called
+199	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models.py:73:8
+72	        # Assert: яхЁхт│Ё ║ью, ∙ю ёшёЄхьр ъюЁхъЄэю яютхЁЄр║ Ёючъырф
+73	        assert len(events) == 2  # ╠р║ сєЄш 2 яюф│┐ фы  уЁєяш ╩╤-21
+74	        assert events[0][3] == '╠рЄхьрЄшър'  # title яхЁ°ю┐ яюф│┐
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models.py:74:8
+73	        assert len(events) == 2  # ╠р║ сєЄш 2 яюф│┐ фы  уЁєяш ╩╤-21
+74	        assert events[0][3] == '╠рЄхьрЄшър'  # title яхЁ°ю┐ яюф│┐
+75	        assert events[1][3] == '╘│чшър'      # title фЁєую┐ яюф│┐
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models.py:75:8
+74	        assert events[0][3] == '╠рЄхьрЄшър'  # title яхЁ°ю┐ яюф│┐
+75	        assert events[1][3] == '╘│чшър'      # title фЁєую┐ яюф│┐
+76	        
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models.py:79:12
+78	        for event in events:
+79	            assert len(event) == 6  # id, date, time, title, room, group_name
+80	            assert event[5] == '╩╤-21'  # ┬ё│ яюф│┐ ьр■Є№ эрыхцрЄш уЁєя│ ╩╤-21
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models.py:80:12
+79	            assert len(event) == 6  # id, date, time, title, room, group_name
+80	            assert event[5] == '╩╤-21'  # ┬ё│ яюф│┐ ьр■Є№ эрыхцрЄш уЁєя│ ╩╤-21
+81	        
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models.py:97:8
+96	        # Assert: яхЁхт│Ё ║ью, ∙ю ёшёЄхьр чэрїюфшЄ№ ъюЁшёЄєтрў│т ч єт│ьъэхэшьш ёяют│∙хээ ьш
+97	        assert len(users) == 1  # ╥│ы№ъш юфшэ ъюЁшёЄєтрў ч єт│ьъэхэшьш ёяют│∙хээ ьш
+98	        assert users[0][2] == '▓трэ ▓трэют'  # full_name
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models.py:98:8
+97	        assert len(users) == 1  # ╥│ы№ъш юфшэ ъюЁшёЄєтрў ч єт│ьъэхэшьш ёяют│∙хээ ьш
+98	        assert users[0][2] == '▓трэ ▓трэют'  # full_name
+99	        assert users[0][4] == 1  # notifications_enabled = True
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models.py:99:8
+98	        assert users[0][2] == '▓трэ ▓трэют'  # full_name
+99	        assert users[0][4] == 1  # notifications_enabled = True
+100	        
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models.py:103:8
+102	        user_ids = [user[0] for user in users]
+103	        assert 987654321 not in user_ids  # ╧хЄЁю ╧хЄЁхэъю ьр║ тшьъэхэ│ ёяют│∙хээ 
+104	        
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models.py:120:8
+119	        # Assert: яхЁхт│Ё ║ью, ∙ю ёшёЄхьр ъюЁхъЄэю яютхЁЄр║ яюф│┐ эр фрЄє
+120	        assert len(events) == 2  # ╠р║ сєЄш 2 яюф│┐ эр 2025-09-16
+121	        assert all(event[1] == '2025-09-16' for event in events)  # ┬ё│ яюф│┐ ьр■Є№ яюЄЁ│сэє фрЄє
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models.py:121:8
+120	        assert len(events) == 2  # ╠р║ сєЄш 2 яюф│┐ эр 2025-09-16
+121	        assert all(event[1] == '2025-09-16' for event in events)  # ┬ё│ яюф│┐ ьр■Є№ яюЄЁ│сэє фрЄє
+122	        
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models.py:125:8
+124	        event_dates = [event[1] for event in events]
+125	        assert '2025-09-17' not in event_dates  # ╧юф│  ч 17 тхЁхёэ  эх ьр║ сєЄш т Ёхчєы№ЄрЄ│
+126	        
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models.py:142:8
+141	        # Assert: яхЁхт│Ё ║ью ъюЁхъЄэ│ёЄ№ Ї│ы№ЄЁрЎ│┐
+142	        assert len(events) == 2  # ┬ё│ 2 яюф│┐ ╩╤-21 эр Ў■ фрЄє
+143	        assert all(event[1] == '2025-09-16' for event in events)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models.py:143:8
+142	        assert len(events) == 2  # ┬ё│ 2 яюф│┐ ╩╤-21 эр Ў■ фрЄє
+143	        assert all(event[1] == '2025-09-16' for event in events)
+144	        assert all(event[5] == '╩╤-21' for event in events)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models.py:144:8
+143	        assert all(event[1] == '2025-09-16' for event in events)
+144	        assert all(event[5] == '╩╤-21' for event in events)
+145	        
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models_validation.py:37:4
+36	    new_id = models.add_event(date=today, time="09:00", title="╧Ёюур", room="101", group_name="╩╤-21")
+37	    assert isinstance(new_id, int)
+38	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models_validation.py:42:4
+41	    titles = {r[3] if isinstance(r, tuple) else r["title"] for r in rows}
+42	    assert "╧Ёюур" in titles
+43	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b101_assert_used.html
+   Location: .\tests\test_models_validation.py:49:4
+48	    users = models.get_users_for_group("═┼▓╤═╙▐╫└")
+49	    assert users == [] or len(users) == 0
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 1102
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 31
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 31
+Files skipped (0):
