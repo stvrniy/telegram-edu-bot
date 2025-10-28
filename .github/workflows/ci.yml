@@ -1,0 +1,45 @@
+# .github/workflows/ci.yml
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+
+      - name: Install runtime deps
+        run: pip install -r requirements.txt
+
+      - name: Install test deps
+        run: pip install -r requirements-test.txt
+
+      - name: Bandit
+        run: bandit -r . -x venv,venv_*,.git,__pycache__,.pytest_cache -f json | tee reports/bandit.json
+
+      - name: Semgrep
+        run: semgrep scan --config=p/ci --config=p/python --exclude venv --exclude venv_* --exclude .git --exclude .pytest_cache --timeout 180 --json --output reports/semgrep.json
+
+      - name: pip-audit
+        run: pip-audit -r requirements.txt -f json | tee reports/pip-audit.json
+
+      - name: Safety (optional; needs key)
+        env:
+          SAFETY_API_KEY: ${{ secrets.SAFETY_API_KEY }}
+        run: |
+          if [ -n "${SAFETY_API_KEY}" ]; then
+            safety scan -r requirements.txt --json > reports/safety.json || true
+          fi
+
+      - name: Run tests
+        run: pytest -q

@@ -1,5 +1,5 @@
 ﻿Safety 3.6.2 scanning D:\University\practyka\TelegramBot
-2025-10-28 11:05:18 UTC
+2025-10-28 11:16:05 UTC
 
 Account: API key used
 Project: telegram-edu-bot
@@ -10,27 +10,16 @@ policy files
 
 Python detected. Found 1 Python requirement file and 2 Python environments
 
-Dependency vulnerabilities detected:
-
-📝 requirements.txt:
-
- starlette==0.41.3 [1 vulnerability found]                                     
-  -> Vuln ID 78279: CVE-2025-54121, CVSS Severity MEDIUM                       
-     Affected versions of the `starlette` package are vulnerable to Denial of  
-     Service (DoS) due to improper handlin...                                  
- Update starlette==0.41.3 to starlette==0.47.2 to fix 1 vulnerability          
- Versions of starlette with no known vulnerabilities: 0.48.0, 0.47.3           
- Learn more:                                                                   
- https://data.safetycli.com/p/pypi/starlette/eda/?from=0.41.3&to=0.47.2        
-
-✅ venv_test\pyvenv.cfg: No issues found.
+✅ requirements.txt: No issues found.
 
 ✅ venv_sca\pyvenv.cfg: No issues found.
 
-Tested 265 dependencies for security issues using policy fetched from Safety 
+✅ venv_test\pyvenv.cfg: No issues found.
+
+Tested 266 dependencies for security issues using policy fetched from Safety 
 Platform
-11 vulnerabilities found, 10 ignored due to policy.
-1 fix suggested, resolving 1 vulnerabilities.
+9 vulnerabilities found, 9 ignored due to policy.
+0 fixes suggested, resolving 0 vulnerabilities.
 
 Project dashboard: 
 https://platform.safetycli.com/codebases/telegram-edu-bot/findings?branch=feat/
