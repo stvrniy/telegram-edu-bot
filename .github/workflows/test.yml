@@ -1,10 +1,10 @@
-name: Tests
+name: Tests & SCA
 on:
   push:
   pull_request:
 
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,8 +18,11 @@ jobs:
           python -m pip install -U pip
           pip install -r requirements.txt
           pip install -r requirements-test.txt
+          pip install bandit semgrep pip-audit
+          # Safety (optional):
+          # pip install safety
 
-      - name: Run unit tests with coverage (statements + branches)
+      - name: Pytest with coverage (statements + branches)
         run: |
           pytest -q --maxfail=1 \
             --cov=database --cov=handlers --cov=services \
@@ -27,9 +30,46 @@ jobs:
             --cov-report=term-missing \
             --cov-report=html
 
-      - name: Upload coverage HTML
+      - name: Ensure reports dir
+        run: |
+          mkdir -p reports
+
+      - name: Run Bandit
+        run: |
+          bandit -r . -x venv,venv_*,.git,__pycache__,.pytest_cache \
+            -f json > reports/bandit.json
+          bandit -r . -x venv,venv_*,.git,__pycache__,.pytest_cache \
+            -f txt  > reports/bandit.txt
+
+      - name: Run Semgrep
+        run: |
+          semgrep scan --config=p/ci --config=p/python \
+            --exclude venv --exclude venv_* --exclude .git --exclude .pytest_cache \
+            --timeout 180 --json --output reports/semgrep.json
+
+      - name: Run pip-audit
+        run: |
+          pip-audit -r requirements.txt -f json > reports/pip-audit.json
+
+      # ============ OPTION A: Safety ============
+      # - name: Run Safety
+      #   if: ${{ env.SAFETY_API_KEY != '' }}
+      #   env:
+      #     SAFETY_API_KEY: ${{ secrets.SAFETY_API_KEY }}
+      #   run: |
+      #     safety scan -r requirements.txt --json > reports/safety.json
+
+      # ============ OPTION B: Gitleaks ============
+      - name: Run Gitleaks (secrets scan)
+        uses: zricethezav/gitleaks-action@v2
+        with:
+          args: detect -v --report-format json --report-path reports/gitleaks.json
+
+      - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: htmlcov
-          path: htmlcov
+          name: sca-reports
+          path: |
+            reports/*
+            htmlcov
